@@ -30,6 +30,6 @@ app.get('/users/:token', userController.getAllUsers);
 
 
 //server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log(`Listening on port ${process.env.PORT}`);
 })
