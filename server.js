@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 //route
 app.get('/',function(req, res) {
-  const indexPage = "./404.html";
+  const indexPage = "./index.html";
   if (fs.existsSync(indexPage)) {
     res.sendFile(path.join(__dirname+'/index.html'));
   }
