@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const userController = require('./controllers/user.controller');
 const authController = require('./controllers/auth.controller');
 const bodyParser = require('body-parser');
@@ -15,11 +16,12 @@ app.use(cookieParser());
 
 //route
 app.get('/',function(req, res) {
-  const indexPage = __dirname +'\\index.html';
+  const indexPage = path.join(__dirname +'\\index.html');
+  console.log("CHEMIN", indexPage);
   if (fs.existsSync(indexPage)) {
     res.sendFile(indexPage);
   } else {
-    res.sendFile(__dirname +'\\404.html');
+    res.sendFile(path.join(__dirname +'\\404.html'));
   }
 });
 app.post("/register", authController.register);
