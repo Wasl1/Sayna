@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const fs = require('fs');
 const userController = require('./controllers/user.controller');
 const authController = require('./controllers/auth.controller');
@@ -16,12 +15,12 @@ app.use(cookieParser());
 
 //route
 app.get('/',function(req, res) {
-  // const indexPage = "./index.html";
-  // if (fs.existsSync(indexPage)) {
-  //   res.sendFile(path.join(__dirname+'/index.html'));
-  // }
-  // res.sendFile(path.join(__dirname+'/404.html'));
-  res.send('Hello World!')
+  const indexPage = __dirname +'\\index.html';
+  if (fs.existsSync(indexPage)) {
+    res.sendFile(indexPage);
+  } else {
+    res.sendFile(__dirname +'\\404.html');
+  }
 });
 app.post("/register", authController.register);
 app.post("/login", authController.login);
