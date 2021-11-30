@@ -16,12 +16,13 @@ app.use(cookieParser());
 
 //route
 app.get('/',function(req, res) {
-  const indexPage = "./index.html";
-  if (fs.existsSync(indexPage)) {
-    res.sendFile(path.join(__dirname+'/index.html'));
-  }
-  res.sendFile(path.join(__dirname+'/404.html'));
-  });
+  // const indexPage = "./index.html";
+  // if (fs.existsSync(indexPage)) {
+  //   res.sendFile(path.join(__dirname+'/index.html'));
+  // }
+  // res.sendFile(path.join(__dirname+'/404.html'));
+  res.send('Hello World!')
+});
 app.post("/register", authController.register);
 app.post("/login", authController.login);
 app.post("/refreshToken", authController.refreshToken);
