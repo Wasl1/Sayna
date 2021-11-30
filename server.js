@@ -16,12 +16,11 @@ app.use(cookieParser());
 
 //route
 app.get('/',function(req, res) {
-  const indexPage = path.join(__dirname +'\\index.html');
-  console.log("CHEMIN", indexPage);
+  const indexPage = path.join(__dirname, 'index.html');
   if (fs.existsSync(indexPage)) {
     res.sendFile(indexPage);
   } else {
-    res.sendFile(path.join(__dirname +'\\404.html'));
+    res.sendFile(path.join(__dirname, '404.html'));
   }
 });
 app.post("/register", authController.register);
